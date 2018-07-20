@@ -45,6 +45,6 @@ export class EditUserComponent implements OnInit {
         error => {
           alert(error);
         });
-  }
-
-}
+      }
+    }
+     

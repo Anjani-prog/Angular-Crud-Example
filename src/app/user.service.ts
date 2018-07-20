@@ -5,14 +5,14 @@ import {User} from "./user.model";
 @Injectable()
 export class UserService {
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:8080/user-portal/users';
+  baseUrl: string = 'http://127.0.0.1:8000/users/';
 
   getUsers() {
     return this.http.get<User[]>(this.baseUrl);
   }
 
   getUserById(id: number) {
-    return this.http.get<User>(this.baseUrl + '/' + id);
+    return this.http.get<User>(this.baseUrl + id);
   }
 
   createUser(user: User) {
@@ -20,10 +20,10 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    return this.http.put(this.baseUrl + '/' + user.id, user);
+    return this.http.put(this.baseUrl + user.id +'/', user);
   }
-
+  
   deleteUser(id: number) {
-    return this.http.delete(this.baseUrl + '/' + id);
+    return this.http.delete(this.baseUrl + id);
   }
 }
